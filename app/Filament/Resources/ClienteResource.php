@@ -2,13 +2,15 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ClienteResource\Pages;
-use App\Models\Cliente;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Cliente;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use App\Filament\Resources\ClienteResource\Pages;
+use Filament\Actions\DeleteAction;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class ClienteResource extends Resource
 {
@@ -51,10 +53,14 @@ class ClienteResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    ExportBulkAction::make()
+
                 ]),
             ])
             ->emptyStateActions([
