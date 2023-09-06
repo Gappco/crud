@@ -46,14 +46,9 @@ class PetResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('nombre'),
-<<<<<<< HEAD
-                Tables\Columns\ImageColumn::make('signature')->width(200),
                 Tables\Columns\ImageColumn::make('avatar')->width(400)->height(200),
                 Tables\Columns\TextColumn::make('date_of_birth')
-=======
-                Tables\Columns\TextColumn::make('signature'),
-                Tables\Columns\TextColumn::make('date_of_birth'),
->>>>>>> 2e69f64d6dd55c58fa761416eac212c01ae67631
+       
             ])
             ->filters([
                 //
