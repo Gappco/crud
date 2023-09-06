@@ -2,17 +2,14 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Pet;
-use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PetResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PetResource\RelationManagers;
+use App\Models\Pet;
 use Coolsam\SignaturePad\Forms\Components\Fields\SignaturePad;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
 class PetResource extends Resource
 {
@@ -29,17 +26,17 @@ class PetResource extends Resource
                     Forms\Components\TextInput::make('nombre'),
                     Forms\Components\FileUpload::make('avatar'),
                     SignaturePad::make('signature')
-                    ->backgroundColor('white') // Set the background color in case you want to download to jpeg
-                     ->penColor('black') // Set the pen color
-                     ->strokeMinDistance(2.0) // set the minimum stroke distance (the default works fine)
-                    ->strokeMaxWidth(2.5) // set the max width of the pen stroke
-                     ->strokeMinWidth(3.0) // set the minimum width of the pen stroke
-                     ->strokeDotSize(2.0) // set the stroke dot size.
-                    ->hideDownloadButtons() // In case you don't want to show the download buttons on the pad, you can hide them by setting this option.
+                        ->backgroundColor('white') // Set the background color in case you want to download to jpeg
+                        ->penColor('black') // Set the pen color
+                        ->strokeMinDistance(2.0) // set the minimum stroke distance (the default works fine)
+                        ->strokeMaxWidth(2.5) // set the max width of the pen stroke
+                        ->strokeMinWidth(3.0) // set the minimum width of the pen stroke
+                        ->strokeDotSize(2.0) // set the stroke dot size.
+                        ->hideDownloadButtons() // In case you don't want to show the download buttons on the pad, you can hide them by setting this option.
                     ,
-                    Forms\Components\DatePicker::make('date_of_birth') 
-                    ->native(false)
-                ])
+                    Forms\Components\DatePicker::make('date_of_birth')
+                        ->native(false),
+                ]),
             ]);
     }
 
@@ -49,9 +46,14 @@ class PetResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('nombre'),
+<<<<<<< HEAD
                 Tables\Columns\ImageColumn::make('signature')->width(200),
                 Tables\Columns\ImageColumn::make('avatar')->width(400)->height(200),
                 Tables\Columns\TextColumn::make('date_of_birth')
+=======
+                Tables\Columns\TextColumn::make('signature'),
+                Tables\Columns\TextColumn::make('date_of_birth'),
+>>>>>>> 2e69f64d6dd55c58fa761416eac212c01ae67631
             ])
             ->filters([
                 //
@@ -68,14 +70,14 @@ class PetResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -83,5 +85,5 @@ class PetResource extends Resource
             'create' => Pages\CreatePet::route('/create'),
             'edit' => Pages\EditPet::route('/{record}/edit'),
         ];
-    }    
+    }
 }

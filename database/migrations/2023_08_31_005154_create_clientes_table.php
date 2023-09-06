@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('pets', function (Blueprint $table) {
-            //
-            $table->text('signature')->nullable();
+        Schema::create('clientes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('email');
+            $table->string('telefono');
+            $table->timestamps();
         });
     }
 
@@ -22,9 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pets', function (Blueprint $table) {
-            //
-            $table->dropColumn('signature');
-        });
+        Schema::dropIfExists('clientes');
     }
 };
