@@ -26,8 +26,8 @@ class PetResource extends Resource
             ->schema([
                 //
                 Forms\Components\Section::make([
-                    Forms\Components\FileUpload::make('avatar'),
                     Forms\Components\TextInput::make('nombre'),
+                    Forms\Components\FileUpload::make('avatar'),
                     SignaturePad::make('signature')
                     ->backgroundColor('white') // Set the background color in case you want to download to jpeg
                      ->penColor('black') // Set the pen color
@@ -49,7 +49,8 @@ class PetResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('nombre'),
-                Tables\Columns\TextColumn::make('signature'),
+                Tables\Columns\ImageColumn::make('signature')->width(200),
+                Tables\Columns\ImageColumn::make('avatar')->width(400)->height(200),
                 Tables\Columns\TextColumn::make('date_of_birth')
             ])
             ->filters([
